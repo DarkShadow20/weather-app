@@ -3,7 +3,7 @@ const api={
     baseurl:"https://api.openweathermap.org/data/2.5/"
 }
 
-var searchbox=document.querySelector('.search-box');
+const searchbox=document.querySelector('.search-box');
 searchbox.addEventListener('keypress',setQuery);
 
 function setQuery(evt){
@@ -23,32 +23,32 @@ function getResults(query){
 
 function displayResults(weather){
     console.log(weather);
-    var city=document.querySelector('.location .city');
+    let city=document.querySelector('.location .city');
     city.innerText=`${weather.name}, ${weather.sys.country}`;
 
-    var now= new Date();
-    var date=document.querySelector('.location .date');
+    let now= new Date();
+    let date=document.querySelector('.location .date');
     date.innerText=dateBuilder(now);
 
-    var temp=document.querySelector('.current .temp');
+    let temp=document.querySelector('.current .temp');
     temp.innerHTML=`${Math.round(weather.main.temp)}<span>°c</span>`;
 
-    var weather_el=document.querySelector('.current .weather');
+    let weather_el=document.querySelector('.current .weather');
     weather_el.innerText=weather.weather[0].main;
 
-    var hilow=document.querySelector('.hi-low');
+    let hilow=document.querySelector('.hi-low');
     hilow.innerText=`${Math.round(weather.main.temp_min)}°c / ${Math.round(weather.main.temp_max)}°c `
 }
 
 function dateBuilder(d){
-    var months=["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
-    var days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months=["January","Feburary","March","April","May","June","July","August","September","October","November","December"]
+    const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
-    var day=days[d.getDay()];
-    //console.log(d.getFullYear());
-    var date=d.getDate();
-    var month=months[d.getMonth()];
-    var year=d.getFullYear();
+    let day=days[d.getDay()];
+    
+    let date=d.getDate();
+    let month=months[d.getMonth()];
+    let year=d.getFullYear();
 
     return `${day} ${date} ${month} ${year}`
 }
